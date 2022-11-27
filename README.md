@@ -10,8 +10,8 @@ start();
 // isMain  - true - if you want to display it in chapters choose menu
 // func    - Scene logic itself
 //
-// setScene("beginning1", "The Beginning", true, func)   - It's a main chapter (Starter)
-// setScene("beginning2", "",              false, func)  - It's a simple chapter
+// addScene("beginning1", "The Beginning", true, func)   - It's a main chapter (Starter)
+// addScene("beginning2", "",              false, func)  - It's a simple chapter
 addScene(name, title, isMain, func)
 
 // Dict with Scenes
