@@ -1,16 +1,17 @@
 window.mscenes = {};
 window.mscene_cur = "main";
 window.mvars = {};
+window.lastBGSrc = "";
+window.appdiv = document.getElementById("text");
 
-function mgoto(name=mscene_cur) {
-    mclear();
+function goto(name=mscene_cur) {
+    clear();
     window.mscene_cur = name;
     window.mscenes[name]();
 }
 
-function molostart() {
-    mclear();
-    window.mscenes[window.mscene_cur]();
+function start() {
+    goto(mscene_cur);
 }
 
 window.music = new Audio();
@@ -53,34 +54,21 @@ function _fadeAdd(source, elem, transitionMS) {
     })
 }
 
-function mprint(text, nextLine=true, transition=window.textTransition) {
+function print(text, transition=textTransition, target=appdiv) {
     let t = document.createElement("span");
     t.innerText = text;
-    let textEl = document.getElementById("text");
-    let promise = _fadeAdd(textEl, t, transition);
-    if (nextLine) {
-        let br = document.createElement("br");
-        textEl.appendChild(br);
-    }
+    let promise = _fadeAdd(target, t, transition);
+    // Next line
+    let br = document.createElement("br");
+    target.appendChild(br);
+
     return promise;
 }
 
-async function printContinue(text) {
-    await mprint(text, false);
-    return new Promise(async ok => {
-        let b = await button(">>", () => {
-            ok();
-            b.parentElement.removeChild(b);
-        });
-        await mprint("");
-    });
-}
-
-async function printLetter(text, time=1000, nextLine=true) {
+async function printLetter(text, time=textTransition, target=appdiv) {
     let p = document.createElement("span");
     let timePerLetter = time / text.length;
     let ptr = 0;
-    let textEl = document.getElementById("text");
     return new Promise(async ok => {
         let interval = 0;
         interval = _setInterval(async () => {
@@ -88,41 +76,114 @@ async function printLetter(text, time=1000, nextLine=true) {
                 p.innerHTML += text[ptr++];
             } else {
                 clearInterval(interval);
-                if (nextLine) textEl.appendChild(document.createElement("br"))
+                target.appendChild(document.createElement("br"))
                 _setTimeout(ok, timePerLetter);
             }
         }, timePerLetter)
-        await _fadeAdd(textEl, p, 100);
+        await _fadeAdd(target, p, 100);
     })
 }
 
+async function printWait(text, waitButtonName="Continue", time=1000, target=appdiv) {
+    await print(text, time, target);
+    return buttonWait(waitButtonName, target);
+}
 
-function mclear() {
+async function printLetterWait(text, waitButtonName="Continue", time=1000, target=appdiv) {
+    await printLetter(text, time, target);
+    return buttonWait(waitButtonName, target);
+}
+
+
+function clear(target=appdiv) {
     _clearTimers();
     document.body.style['scale'] = 0.75;
-    document.getElementById("text").innerHTML = "";
+    target.innerHTML = "";
     setTimeout(() => {
         document.body.style['scale'] = 1;
     }, 100);
 }
 
-function button(name, onclick) {
-    let el = document.getElementById("text");
+function button(name, onclick, target=appdiv) {
     let b = document.createElement("button");
     b.innerText = name;
     b.onclick = onclick;
-    el.appendChild(b);
+    target.appendChild(b);
     return b;
 }
 
-function buttonX(name, sceneToGo, func = ()=>{}) {
-    if (sceneToGo === "" || sceneToGo === 0 || sceneToGo === null) sceneToGo = mscene_cur
-    return button(name, () => { func(); mgoto(sceneToGo); });
+function choose(title, buttons, transtitionMs=textTransition, target=appdiv) {
+    return new Promise(async ok => {
+        let span = document.createElement('span');
+        // Add title
+        let titleElem = document.createElement("span");
+        titleElem.innerHTML = title;
+        span.appendChild(titleElem);
+
+        buttons.forEach(b => {
+            const name = b[0];
+            const val = b[1];
+            button(name, () => {
+                span.parentElement.removeChild(span);
+                ok(val);
+            }, span);
+        });
+        _fadeAdd(target, span, transtitionMs);
+    })
 }
 
-function addImage(src, sizew=100, sizeh) {
+function chooseTimer(title, seconds, defval, buttons, transtitionMs=textTransition, target=appdiv) {
+    return new Promise(ok => {
+        let span = document.createElement('span');
+        
+        // Add title
+        let titleElem = document.createElement("span");
+        titleElem.innerHTML = title;
+        span.appendChild(titleElem);
+
+        let timerElem = document.createElement("i");
+        timerElem.innerHTML = "(" + seconds + ")";
+        span.appendChild(timerElem);
+
+        let timer = _setInterval(() => {
+            seconds--;
+            timerElem.innerHTML = "(" + seconds + ")";
+            if (seconds < 1) {
+                clearInterval(timer);
+                span.parentElement.removeChild(span);
+                ok(defval);
+            }
+        }, 1000);
+        buttons.forEach(b => {
+            const name = b[0];
+            const val = b[1];
+            button(name, () => {
+                span.parentElement.removeChild(span);
+                ok(val);
+                clearInterval(timer);
+            }, span);
+        });
+        _fadeAdd(target, span, transtitionMs);
+    })
+}
+
+function button2(name, func, sceneToGo=mscene_cur, target=appdiv) {
+    return button(name, () => { func(); mgoto(sceneToGo); }, target);
+}
+
+function buttonWait(name, target=appdiv) {
+    return new Promise(async ok => {
+        let b = button(name, () => {
+            b.parentElement.removeChild(b);
+            ok();
+        }, target);
+    })
+}
+
+function addImage(src, sizew=100, sizeh, center=true) {
     let img = document.createElement("img");
     let br = document.createElement("br");
+    if (center) img.className = "centered";
     img.src = src;
 
     // Set width/height in percents
@@ -133,14 +194,6 @@ function addImage(src, sizew=100, sizeh) {
     let promise = _fadeAdd(text, img, window.textTransition);
     text.appendChild(br);
     return promise;
-}
-
-function addImageCenter(src) {
-    let img = document.createElement("img");
-    img.src = src;
-    img.className = "centered";
-    let text = document.getElementById("text");
-    return _fadeAdd(text, img, window.textTransition);
 }
 
 function playMusic(src, vol=.5) {
@@ -188,6 +241,7 @@ function fontColor(color) {
 }
 
 function bgImage(src) {
+    if (lastBGSrc === src) return;
     document.body.style['background-size'] = "100% " + window.innerHeight + "px";
     document.body.style['background-image'] = 'linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("' + src + '")';
     document.body.style['background-repeat'] = "no-repeat";
@@ -195,6 +249,7 @@ function bgImage(src) {
     document.body.style['transition'] = "200ms";
     bgPosisition("center"); // Change position back to normal
     bgScale(1, 1); // Change scale back to normal
+    lastBGSrc = src;
 }
 
 function bgPosisition(posString) {
@@ -267,4 +322,9 @@ function title(text) {
     t.style.textAlign = "center";
     t.innerHTML = text;
     return _fadeAdd(document.getElementById('text'), t, textTransition);
+}
+
+function hr() {
+    let h = document.createElement("hr");
+    return _fadeAdd(document.getElementById('text'), h, textTransition);
 }
