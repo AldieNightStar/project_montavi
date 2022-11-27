@@ -1,3 +1,5 @@
+#!/bin/env python
+
 import shutil
 import sys
 import os.path

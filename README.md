@@ -2,6 +2,7 @@
 
 * Just download this repo
 * Make sure `montavi.py` is in ENV `PATH` variable
+* On windows use `git-bash`
 * Use `montavi.py new project` to create new project
 
 # Scenes
