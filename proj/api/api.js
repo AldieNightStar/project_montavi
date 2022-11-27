@@ -155,7 +155,7 @@ function chooseTimer(title, seconds, defval, buttons, transtitionMs=textTransiti
 }
 
 function button2(name, func, sceneToGo=scene_cur, target=appdiv) {
-    return button(name, () => { func(); mgoto(sceneToGo); }, target);
+    return button(name, () => { func(); goto(sceneToGo); }, target);
 }
 
 function buttonWait(name, target=appdiv) {

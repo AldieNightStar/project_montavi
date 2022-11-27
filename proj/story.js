@@ -13,7 +13,8 @@ async function storyInit() {
             "So you can enjoy"
         ]
         let ptr = 0;
-        await printLetter(story[ptr++]);
-        button2("Update", )
+        await printLetter(story[ptr]);
+        button2("Next", () => ptr++);
+        button2("Prev", () => ptr--);
     });
 }
