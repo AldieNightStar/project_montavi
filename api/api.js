@@ -238,12 +238,12 @@ function bgImage(src) {
     document.body.style['background-repeat'] = "no-repeat";
     document.body.style['background-attachment'] = "fixed";
     document.body.style['transition'] = "200ms";
-    bgPosisition("center"); // Change position back to normal
+    bgPosition("center"); // Change position back to normal
     bgScale(1, 1); // Change scale back to normal
     lastBGSrc = src;
 }
 
-function bgPosisition(posString) {
+function bgPosition(posString) {
     document.body.style['background-position'] = posString;
 }
 
@@ -259,13 +259,13 @@ function bgSwipe(pos1, pos2, transitionMS) {
     return new Promise(ok => {
         bgTransition(0);
         bgScale(2, 2);
-        bgPosisition(pos1);
+        bgPosition(pos1);
 
         _setTimeout(ok, transitionMS);
     
         _setTimeout(() => {
             bgTransition(transitionMS - transitionMS * .1)
-            bgPosisition(pos2)
+            bgPosition(pos2)
         }, transitionMS * .1)
     })
 }
@@ -274,14 +274,14 @@ function bgZoom(size1, size2, transitionMS) {
     return new Promise(ok => {
         bgTransition(0);
         bgScale(size1, size1);
-        bgPosisition("center");
+        bgPosition("center");
 
         _setTimeout(ok, transitionMS);
     
         _setTimeout(() => {
             bgScale(size2, size2);
             bgTransition(transitionMS - transitionMS * .1)
-            bgPosisition("center")
+            bgPosition("center")
         }, transitionMS * .1)
     })
 }

@@ -3,6 +3,7 @@
 import shutil
 import sys
 import os.path
+import time
 
 USAGE = """USAGE:
     montavi.py new name
@@ -12,6 +13,8 @@ DIR = os.path.dirname(os.path.realpath(__file__))
 
 def createProj(name):
     shutil.copytree(DIR, "./" + name)
+    os.remove(f"./{name}/montavi.py")
+    shutil.rmtree(f"./{name}/.git")
 
 def main(args):
     it = iter(args)
