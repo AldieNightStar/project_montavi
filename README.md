@@ -39,18 +39,6 @@ return goto(sceneName)
 
 # Commands
 
-## Sequence
-
-```js
-// array  - array of values
-// caller - func(value) - will call to each value
-await seq([
-    "Text 1",
-    "Text 2",
-    "Text 3"
-], caller=printLetter, prevName="<<", nextName=">>")
-```
-
 ## Timings
 
 ```js

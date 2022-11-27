@@ -6,13 +6,12 @@ async function beforeAllScene() {
 
 async function storyInit() {
     addScene("b01", "The beginning", true, async () => {
-        await seqScenes([
-            async () => {
-                await printLetter("Hello there");
-            },
-            async () => {
-                await printLetter("Hello guys");
-            }
-        ]);
+        let story = [
+            "This is samll story",
+            "With using array",
+            "And what we need is already there",
+            "So you can enjoy"
+        ]
+        let ptr = 0;
     });
 }
