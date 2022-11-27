@@ -1,18 +1,8 @@
 # Scenes
-* When novel is starting, it will execute `main` scene.
-    * `main` scene contains scene chooser, so don't override it
-    * Instead you can add couple of main scenes to work with
+* Do not override `main` scene as it's a chapter chooser
 ```js
 // Start everything
 start();
-
-// Dict with Scenes
-// To get one: mscenes["main"]
-scenes
-
-
-// Name of the current scene. By default: "main"
-scene_cur
 
 // Add new scene
 // name    - tech name. Used for goto command
@@ -23,6 +13,15 @@ scene_cur
 // setScene("beginning1", "The Beginning", true, func)   - It's a main chapter (Starter)
 // setScene("beginning2", "",              false, func)  - It's a simple chapter
 setScene(name, title, isMain, func)
+
+// Dict with Scenes
+// To get one: mscenes["main"]
+// Do not change manualy
+scenes
+
+// Name of the current scene. By default: "main"
+// Do not change manualy
+scene_cur
 ```
 
 # Sequence

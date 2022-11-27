@@ -13,6 +13,7 @@ function start() {
 }
 
 function addScene(name, title, isMain, func) {
+    if (scenes[name] !== undefined) throw new Error("Scene '" + name + "' is already exists");
     scenes[name] = func;
     if (isMain) {
         sceneList.push([title, name]);
