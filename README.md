@@ -121,7 +121,12 @@ button2(name, func, sceneName=cur_scene, target=appdiv);
 
 // Button which blocks until press
 await buttonWait(name, target=appdiv)
+```
 
+
+## Choice
+
+```js
 // Choose button menu. Blocks until choose
 // Returns resulting value
 // accepts array of [name, value] buttons
@@ -143,6 +148,7 @@ await chooseTimer("Choose the button quickly: ", seconds, defval, [
     transtitionMs=textTransition, target=appdiv
 )
 ```
+
 
 ## Images
 
