@@ -7,7 +7,7 @@ async function beforeAllScene() {
 async function storyInit() {
     
     addChapter("b01", "The beginning", async () => {
-        seq([
+        await seq([
             "Text 1",
             "Text 2",
             "Text 3"
