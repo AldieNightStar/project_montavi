@@ -193,6 +193,10 @@ function playMusic(src, vol=.5) {
     music.play();
 }
 
+function setMusicTime(sec) {
+    music.currentTime = sec;
+}
+
 function stopMusic() {
     music.pause();
     music.currentTime = 0;

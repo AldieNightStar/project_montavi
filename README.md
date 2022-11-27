@@ -51,7 +51,7 @@ await seq([
 
 # Commands
 
-## Timers
+## Timings
 
 ```js
 
@@ -63,6 +63,9 @@ _setTimeout(cb, ms);
 
 // Clear all timers
 _clearTimers();
+
+// Wait n milliseconds
+await wait(n);
 ```
 
 ## Printing
@@ -165,13 +168,16 @@ await addImage(src, sizew=100, sizeh, center=true)
 playMusic(src, vol=.5)
 playSound(src, vol=.5)
 
+// Set music time
+setMusicTime(seconds);
+
 // Stop
 stopMusic()
 stopSound()
 
 // Wait until music time
 // Will not block if music stoped or already that time passed
-waitToMusicTime(sec)
+await waitToMusicTime(sec)
 ```
 
 ## Background
