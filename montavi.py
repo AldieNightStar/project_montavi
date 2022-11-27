@@ -12,9 +12,8 @@ USAGE = """USAGE:
 DIR = os.path.dirname(os.path.realpath(__file__))
 
 def createProj(name):
-    shutil.copytree(DIR, "./" + name)
-    os.remove(f"./{name}/montavi.py")
-    shutil.rmtree(f"./{name}/.git")
+    shutil.copytree(f"{DIR}/proj", "./" + name)
+    shutil.copy(f"{DIR}/README.md", "./" + name)
 
 def main(args):
     it = iter(args)
