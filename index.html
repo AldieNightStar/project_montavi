@@ -39,16 +39,41 @@
             border-radius: 5px;
             text-decoration: underline;
         }
+        #bottom_text {
+            height: 64px;
+            width: 100%;
+            position: absolute;
+            background-color: transparent;
+            border-radius: 32px;
+            padding: 10px;
+            opacity: 0%;
+            transition: 300ms;
+        }
     </style>
 </head>
 
 <body>
     <div id="text"></button></div>
+    <div id="bottom_text">dsadsa</button></div>
     <script src='api/scene.js'></script>
     <script src='api/api.js'></script>
     <script src='api/seq.js'></script>
     <script src='story.js'></script>
     <script>window.addEventListener("load", () => { storyInit(); start(); });</script>
+
+    <script>
+        // Bottom text settings
+        window.addEventListener("load", () => {
+            let lastHeight = 0;
+            let btext = document.getElementById("bottom_text");
+            setInterval(() => {
+                let h = window.innerHeight;
+                if (h === lastHeight) return;
+                btext.style.top = h - (h*0.3) + "px";
+                btext.style.opacity = "100%";
+            }, 1000)
+        })
+    </script>
 </body>
 
 </html>

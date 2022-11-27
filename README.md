@@ -24,12 +24,22 @@ scenes
 scene_cur
 ```
 
-# Sequence
+# Sequence of Scenes
 ```js
-// Simple sequnce.
-// Allows you to switch back and forth
-// You can use NOT ONLY text. For example scenes. Just replace values and caller
-//
+// Sequence of subscenes
+// First arg is a array of async functions
+await seqScenes([
+    async () => {
+        await printLetter("Hello there");
+    },
+    async () => {
+        await printLetter("Hello guys");
+    }
+], prevName="<<", nextName=">>");
+```
+
+# Sequence Inside scene
+```js
 // array  - array of values
 // caller - func(value) - will call to each value
 await seq([

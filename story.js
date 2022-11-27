@@ -6,9 +6,13 @@ async function beforeAllScene() {
 
 async function storyInit() {
     addScene("b01", "The beginning", true, async () => {
-        await seq([
-            "This is the first chapter of your story",
-            "Make it interesting",
+        await seqScenes([
+            async () => {
+                await printLetter("Hello there");
+            },
+            async () => {
+                await printLetter("Hello guys");
+            }
         ]);
     });
 }
