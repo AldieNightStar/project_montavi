@@ -1,3 +1,9 @@
+# Install
+
+* Just download this repo
+* Make sure `montavi.py` is in ENV `PATH` variable
+* Use `montavi.py new project` to create new project
+
 # Scenes
 
 * Do not override `main` scene as it's a chapter chooser
