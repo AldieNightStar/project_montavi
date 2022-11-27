@@ -36,6 +36,29 @@ return goto(sceneName)
 
 # Commands
 
+## Sequence
+
+* Sequence adds ability to move back and forth
+* Will drop if current scene is not the same
+
+```js
+// Let's assume we have an array of text
+let array = [
+    "Text 1",
+    "Text 2",
+    "Text 3"
+]
+
+// Just print some text one by one
+await seq(array)
+
+// Clear before printing
+await seq(array, t => {
+    clear();
+    print(t);
+})
+```
+
 ## Timings
 
 ```js
