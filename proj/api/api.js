@@ -71,12 +71,12 @@ async function printLetter(text, time=textTransition, target=appdiv) {
     })
 }
 
-async function printWait(text, waitButtonName="Continue", time=1000, target=appdiv) {
+async function printWait(text, waitButtonName="Continue", time=textTransition, target=appdiv) {
     await print(text, time, target);
     return buttonWait(waitButtonName, target);
 }
 
-async function printLetterWait(text, waitButtonName="Continue", time=1000, target=appdiv) {
+async function printLetterWait(text, waitButtonName="Continue", time=textTransition, target=appdiv) {
     await printLetter(text, time, target);
     return buttonWait(waitButtonName, target);
 }
