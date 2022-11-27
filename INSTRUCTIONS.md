@@ -5,14 +5,14 @@ start();
 
 // Dict with Scenes
 // To get one: mscenes["main"]
-mscenes
+scenes
 
 
 // Name of the current scene. By default: "main"
-mscene_cur
+scene_cur
 
 // Add new scene
-mscenes["name"] = async function () {
+scenes["name"] = async function () {
     // no need to add clear() call
 }
 ```

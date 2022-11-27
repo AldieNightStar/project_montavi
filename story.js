@@ -1,4 +1,4 @@
-mscenes['main'] = async function() {
+scenes['main'] = async function() {
     await title("Project montavi")
     let s = [
         "Это текст первой строчки",

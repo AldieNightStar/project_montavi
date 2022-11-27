@@ -1,17 +1,16 @@
-window.mscenes = {};
-window.mscene_cur = "main";
-window.mvars = {};
+window.scenes = {};
+window.scene_cur = "main";
 window.lastBGSrc = "";
 window.appdiv = document.getElementById("text");
 
-function goto(name=mscene_cur) {
+function goto(name=scene_cur) {
     clear();
-    window.mscene_cur = name;
-    window.mscenes[name]();
+    window.scene_cur = name;
+    window.scenes[name]();
 }
 
 function start() {
-    goto(mscene_cur);
+    goto(scene_cur);
 }
 
 window.music = new Audio();
@@ -167,7 +166,7 @@ function chooseTimer(title, seconds, defval, buttons, transtitionMs=textTransiti
     })
 }
 
-function button2(name, func, sceneToGo=mscene_cur, target=appdiv) {
+function button2(name, func, sceneToGo=scene_cur, target=appdiv) {
     return button(name, () => { func(); mgoto(sceneToGo); }, target);
 }
 
