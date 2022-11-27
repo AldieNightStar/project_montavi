@@ -50,10 +50,10 @@ await seq([
 ```
 
 # Commands
+
+## Timers
+
 ```js
-// =================================
-// Timers
-// =================================
 
 // Set interval
 _setInterval(cb, ms);
@@ -63,7 +63,11 @@ _setTimeout(cb, ms);
 
 // Clear all timers
 _clearTimers();
+```
 
+## Printing
+
+```js
 // =================================
 // Printing
 // =================================
@@ -103,11 +107,11 @@ await hr(target=appdiv);
 
 // Clear the screen
 clear(target=appdiv);
+```
 
-// =================================
-// Buttons
-// =================================
+## Buttons
 
+```js
 // Add button
 button(name, onclick, target=appdiv)
 
@@ -138,19 +142,19 @@ await chooseTimer("Choose the button quickly: ", seconds, defval, [
     ],
     transtitionMs=textTransition, target=appdiv
 )
+```
 
-// =================================
-// Images
-// =================================
+## Images
 
+```js
 // Add image to the screen
 // You can also write: addImage(src)
 await addImage(src, sizew=100, sizeh, center=true)
+```
 
-// =================================
-// Music / Audio
-// =================================
+## Audio
 
+```js
 // Play
 playMusic(src, vol=.5)
 playSound(src, vol=.5)
@@ -162,11 +166,11 @@ stopSound()
 // Wait until music time
 // Will not block if music stoped or already that time passed
 waitToMusicTime(sec)
+```
 
-// =================================
-// Background
-// =================================
+## Background
 
+```js
 // Set background image
 bgImage(src)
 
