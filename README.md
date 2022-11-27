@@ -52,7 +52,7 @@ let array = [
 // Just print some text one by one
 await seq(array)
 
-// Clear before printing
+// Clear and then print some text
 await seq(array, t => {
     clear();
     print(t);
