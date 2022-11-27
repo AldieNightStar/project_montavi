@@ -37,22 +37,9 @@ scene_cur
 return goto(sceneName)
 ```
 
-# Sequence of Scenes
+# Commands
 
-```js
-// Sequence of subscenes
-// First arg is a array of async functions
-await seqScenes([
-    async () => {
-        await printLetter("Hello there");
-    },
-    async () => {
-        await printLetter("Hello guys");
-    }
-], prevName="<<", nextName=">>");
-```
-
-# Sequence Inside scene
+## Sequence
 
 ```js
 // array  - array of values
@@ -63,8 +50,6 @@ await seq([
     "Text 3"
 ], caller=printLetter, prevName="<<", nextName=">>")
 ```
-
-# Commands
 
 ## Timings
 

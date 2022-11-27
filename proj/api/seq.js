@@ -10,7 +10,3 @@ async function seq(array, caller=printLetter, prevName="<<", nextName=">>") {
         }
     }
 }
-
-async function seqScenes(scenes, prevName="<<", nextName=">>") {
-    await seq(scenes, async scene => { clear(); await scene(); hr(); }, prevName, nextName);
-}
