@@ -21,6 +21,7 @@ function addScene(name, title, isMain, func) {
 }
 
 async function showScenes(sceneList=window.sceneList, target=appdiv) {
+    await beforeAllScene();
     chapter = await choose("Choose chapter:", sceneList, 3000, target);
     goto(chapter);
 }
