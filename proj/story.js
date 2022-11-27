@@ -12,6 +12,9 @@ async function storyInit() {
             "This is text 3",
             "This is text 4",
             "This is text 5"
-        ])
+        ], t => {
+            clear();
+            print(t);
+        })
     });
 }
