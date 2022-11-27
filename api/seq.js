@@ -12,5 +12,5 @@ async function seq(array, caller=printLetter, prevName="<<", nextName=">>") {
 }
 
 async function seqScenes(scenes, prevName="<<", nextName=">>") {
-    await seq(scenes, scene => { clear(); scene(); hr(); }, prevName, nextName);
+    await seq(scenes, async scene => { clear(); await scene(); hr(); }, prevName, nextName);
 }

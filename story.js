@@ -16,9 +16,3 @@ async function storyInit() {
         ]);
     });
 }
-
-/*
-:b01 The beginning
-    await printLetter("Hello there!")
-    await printLetter("Hy guys!");
-*/
