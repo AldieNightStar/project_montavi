@@ -316,14 +316,14 @@ function waitToMusicTime(time) {
     })
 }
 
-function title(text) {
+function title(text, target=appdiv) {
     let t = document.createElement("h1");
     t.style.textAlign = "center";
     t.innerHTML = text;
-    return _fadeAdd(document.getElementById('text'), t, textTransition);
+    return _fadeAdd(target, t, textTransition);
 }
 
-function hr() {
+function hr(target=appdiv) {
     let h = document.createElement("hr");
-    return _fadeAdd(document.getElementById('text'), h, textTransition);
+    return _fadeAdd(target, h, textTransition);
 }

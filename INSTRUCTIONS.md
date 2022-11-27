@@ -79,10 +79,10 @@ await printLetter(text, ms, target=appdiv)
 printLetterWait(text, waitButtonName="Continue", time=1000, nextLine=true, target=appdiv)
 
 // Print the title big text
-await title(text, )
+await title(text, target=appdiv)
 
 // Adds horizontal line divider
-await hr();
+await hr(target=appdiv);
 
 // Clear the screen
 clear(target=appdiv);
