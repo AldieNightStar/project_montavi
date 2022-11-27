@@ -1,5 +1,7 @@
 # Scenes
+
 * Do not override `main` scene as it's a chapter chooser
+
 ```js
 // Start everything
 start();
@@ -25,6 +27,7 @@ scene_cur
 ```
 
 # Sequence of Scenes
+
 ```js
 // Sequence of subscenes
 // First arg is a array of async functions
@@ -39,6 +42,7 @@ await seqScenes([
 ```
 
 # Sequence Inside scene
+
 ```js
 // array  - array of values
 // caller - func(value) - will call to each value
