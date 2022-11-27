@@ -84,7 +84,7 @@ async function printLetterWait(text, waitButtonName="Continue", time=textTransit
 
 function clear(target=appdiv) {
     _clearTimers();
-    document.body.style['scale'] = 0.75;
+    document.body.style['scale'] = 0.9;
     target.innerHTML = "";
     setTimeout(() => {
         document.body.style['scale'] = 1;
