@@ -84,11 +84,11 @@ await printWait(text, waitButtonName="Continue", time=1000, target=appdiv)
 
 // Print text letter by letter
 // text - text to print
-// ms   - transition in ms
-await printLetter(text, ms, target=appdiv)
+// time - transition in ms
+await printLetter(text, time, target=appdiv)
 
 // Print text letter by letter and continue button
-printLetterWait(text, waitButtonName="Continue", time=1000, nextLine=true, target=appdiv)
+await printLetterWait(text, waitButtonName="Continue", time=1000, target=appdiv)
 
 // Print the title big text
 await title(text, target=appdiv)

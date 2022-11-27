@@ -13,5 +13,7 @@ async function storyInit() {
             "So you can enjoy"
         ]
         let ptr = 0;
+        await printLetter(story[ptr++]);
+        button2("Update", )
     });
 }
