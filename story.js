@@ -1,3 +1,5 @@
 async function storyInit() {
-    addScene("beginning", )
+    addScene("b01", "The beginning", true, () => {
+        print("Hello there");
+    })
 }
