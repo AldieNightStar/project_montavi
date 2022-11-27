@@ -179,7 +179,7 @@ function addImage(src, sizew=100, sizeh, center=true) {
 
     let text = document.getElementById("text");
     let promise = _fadeAdd(text, img, window.textTransition);
-    text.appendChild(br);
+    if (center) text.appendChild(br);
     return promise;
 }
 
