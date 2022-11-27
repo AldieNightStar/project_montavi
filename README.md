@@ -12,7 +12,7 @@ start();
 //
 // setScene("beginning1", "The Beginning", true, func)   - It's a main chapter (Starter)
 // setScene("beginning2", "",              false, func)  - It's a simple chapter
-setScene(name, title, isMain, func)
+addScene(name, title, isMain, func)
 
 // Dict with Scenes
 // To get one: mscenes["main"]
