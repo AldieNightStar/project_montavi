@@ -12,12 +12,18 @@ function start() {
     goto(scene_cur);
 }
 
-function addScene(name, title, isMain, func) {
+function addScene(name, func) {
     if (scenes[name] !== undefined) throw new Error("Scene '" + name + "' is already exists");
     scenes[name] = func;
     if (isMain) {
         sceneList.push([title, name]);
     }
+}
+
+function addChapter(name, title, func) {
+    if (scenes[name] !== undefined) throw new Error("Scene '" + name + "' is already exists");
+    scenes[name] = func;
+    sceneList.push([title, name]);
 }
 
 async function showScenes(sceneList=window.sceneList, target=appdiv) {

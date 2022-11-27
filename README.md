@@ -13,15 +13,12 @@
 // Start everything
 start();
 
-// Add new scene
-// name    - tech name. Used for goto command
-// title   - Full name of the title (non-technical)
-// isMain  - true - if you want to display it in chapters choose menu
-// func    - Scene logic itself
-//
-// addScene("beginning1", "The Beginning", true, func)   - It's a main chapter (Starter)
-// addScene("beginning2", "",              false, func)  - It's a simple chapter
-addScene(name, title, isMain, func)
+// Add simple scene
+addScene(name, func)
+
+// Add Chapter scene. Will also be displayed in main menu
+// title - is a name in main menu
+addChapter(name, title, func)
 
 // Dict with Scenes
 // To get one: mscenes["main"]

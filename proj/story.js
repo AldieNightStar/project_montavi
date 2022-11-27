@@ -5,7 +5,7 @@ async function beforeAllScene() {
 }
 
 async function storyInit() {
-    addScene("b01", "The beginning", true, async () => {
+    addChapter("b01", "The beginning", async () => {
         
     });
 }
