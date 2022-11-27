@@ -1,17 +1,5 @@
-window.scenes = {};
-window.scene_cur = "main";
 window.lastBGSrc = "";
 window.appdiv = document.getElementById("text");
-
-function goto(name=scene_cur) {
-    clear();
-    window.scene_cur = name;
-    window.scenes[name]();
-}
-
-function start() {
-    goto(scene_cur);
-}
 
 window.music = new Audio();
 window.sound = new Audio();

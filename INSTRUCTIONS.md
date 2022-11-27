@@ -1,4 +1,7 @@
 # Scenes
+* When novel is starting, it will execute `main` scene.
+    * `main` scene contains scene chooser, so don't override it
+    * Instead you can add couple of main scenes to work with
 ```js
 // Start everything
 start();
@@ -12,9 +15,14 @@ scenes
 scene_cur
 
 // Add new scene
-scenes["name"] = async function () {
-    // no need to add clear() call
-}
+// name    - tech name. Used for goto command
+// title   - Full name of the title (non-technical)
+// isMain  - true - if you want to display it in chapters choose menu
+// func    - Scene logic itself
+//
+// setScene("beginning1", "The Beginning", true, func)   - It's a main chapter (Starter)
+// setScene("beginning2", "",              false, func)  - It's a simple chapter
+setScene(name, title, isMain, func)
 ```
 
 # Sequence
