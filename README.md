@@ -31,6 +31,10 @@ scenes
 // Name of the current scene. By default: "main"
 // Do not change manualy
 scene_cur
+
+// Go to scene by name
+// Better to use with 'return' keyword
+return goto(sceneName)
 ```
 
 # Sequence of Scenes
